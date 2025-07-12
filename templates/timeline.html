@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Our Timeline 🕰️</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    .timeline {
+      max-width: 600px;
+      margin: auto;
+      padding: 40px;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      width: 2px;
+      background: #ff4b91;
+      top: 0;
+      bottom: 0;
+    }
+
+    .event {
+      position: relative;
+      margin: 20px 0;
+      padding-left: 50%;
+      text-align: left;
+    }
+
+    .event::before {
+      content: '';
+      position: absolute;
+      left: calc(50% - 8px);
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      background: #ff4b91;
+      border-radius: 50%;
+    }
+
+    .event .content {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    .event:nth-child(even) {
+      padding-left: 0;
+      padding-right: 50%;
+      text-align: right;
+    }
+
+    .event:nth-child(even) .content {
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <h2>📜 Our Beautiful Journey</h2>
+  <div class="timeline">
+    {% for event in events %}
+      <div class="event">
+        <div class="content">
+          <h3>{{ event.title }}</h3>
+          <small>{{ event.event_date }}</small>
+          <p>{{ event.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

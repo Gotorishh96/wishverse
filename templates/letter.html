@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Your Birthday Letter 💌</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    .letter-box {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-size: 1.2em;
+      line-height: 1.6;
+      text-align: left;
+      white-space: pre-line;
+    }
+    .typing {
+      border-right: 2px solid #e91e63;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+  <h2>💌 A Letter from My Heart</h2>
+  <div class="letter-box">
+    <span id="typed-letter" class="typing"></span>
+  </div>
+
+  <script>
+    const message = `Hey My Love ❤️,
+
+Happy Birthday to the most beautiful soul I know.
+
+Every day with you feels magical, and on this special day, I want to remind you how much you mean to me.
+
+You’ve made me smile, laugh, and feel things I never imagined possible. Thank you for being you.
+
+Here's to more adventures, cuddles, and endless memories. 🥂
+
+I love you more than words can express.
+- Yours Forever 💖`;
+
+    let i = 0;
+    const speed = 40;
+    const element = document.getElementById("typed-letter");
+
+    function typeWriter() {
+      if (i < message.length) {
+        element.innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      } else {
+        element.classList.remove('typing');
+      }
+    }
+
+    window.onload = typeWriter;
+  </script>
+</body>
+</html>
